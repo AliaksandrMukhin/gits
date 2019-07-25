@@ -1,15 +1,20 @@
 pipeline {
-    agent any
-    environment { 
-        CC = 'clang'
-    }
+    agent none
     stages {
-        stage('Example') {
-            environment { 
-                DEBUG_FLAGS = '-g'
+        stage('Back-end') {
+            agent {
+                docker { image 'maven:3-alpine' }
             }
             steps {
-                bat 'echo hi,Alex'
+                bat 'mvn --version'
+            }
+        }
+        stage('Front-end') {
+            agent {
+                docker { image 'node:7-alpine' }
+            }
+            steps {
+                bat 'node --version'
             }
         }
     }
