@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
         stage('Back-end') {        
             steps {
                 bat 'mvn --version'
