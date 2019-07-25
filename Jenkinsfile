@@ -9,13 +9,5 @@ pipeline {
                 bat 'mvn --version'
             }
         }
-        stage('Front-end') {
-            agent {
-                docker { image 'node:7-alpine' }
-            }
-            steps {
-                bat 'node --version'
-            }
-        }
     }
 }
